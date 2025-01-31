@@ -1,7 +1,6 @@
 import java.util.Arrays;
 import java.util.Scanner;
 
-
 public class Ashley {
     public static void main(String[] args) {
         System.out.println("Hello! I'm Ashley");
@@ -11,27 +10,31 @@ public class Ashley {
         String line;
         Scanner in = new Scanner(System.in);
         line = in.nextLine();
-        String[] tasks = new String[100];
-        int taskCounter = 0;
+        TaskManager taskManager = new TaskManager();
+
         while (line != null) {
             if (line.equals("bye")) {
                 System.out.println("        " + "Bye. Hope to see you again soon!");
                 break;
             }
-            if (line.equals("list")) {
-                int x = 1;
-                String[] listToBePrinted = Arrays.copyOf(tasks, taskCounter);
-                for (String task : listToBePrinted) {
-                    System.out.println(x + ":" + task);
-                    x++;
+            else if (line.contains("mark")) {
+                for (char c : line.toCharArray()) {
+                    if (Character.isDigit(c)) {
+                        int taskId = Integer.parseInt(Character.toString(c));
+                        taskManager.setAsDone(taskId);
+                        System.out.println("Task " + taskId + " has been marked as done.");
+                        break; // Exit loop as soon as a digit is found
+                    }
                 }
-                line = in.nextLine();
-            } else {
-                tasks[taskCounter] = line;
-                taskCounter++;
-                System.out.println("        " + "Added:" + line);
-                line = in.nextLine();
             }
+            else if (line.equals("list")) {
+                taskManager.listTasks();
+            } else {
+                taskManager.addTask(line);
+                System.out.println("        " + "Added:" + line);
+
+            }
+            line = in.nextLine();
         }
     }
 }
