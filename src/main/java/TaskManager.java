@@ -1,5 +1,5 @@
 public class TaskManager {
-    private int taskCount = 0;
+    private static int taskCount = 0;
     private Task[] tasks = new Task[100];
 
     public void addTask(String taskDescription) {
