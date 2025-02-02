@@ -13,7 +13,7 @@ public class TaskManager {
 
     public void listTasks() {
         for (int i = 0; i < taskCount; i++) {
-            System.out.println(tasks[i].taskId + ":" + "[" + tasks[i].getStatusIcon() + "]" + tasks[i].description);
+            System.out.println(tasks[i].getTaskId() + ":" + "[" + tasks[i].getStatusIcon() + "]" + tasks[i].getDescription());
 
         }
     }

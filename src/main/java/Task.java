@@ -1,7 +1,7 @@
 public class Task {
-    protected String description;
-    protected boolean isDone;
-    protected int taskId;
+    private String description;
+    private boolean isDone;
+    private int taskId;
 
     public Task(String description, int taskId) {
         this.description = description;
@@ -21,5 +21,7 @@ public class Task {
         isDone = true;
     }
 
-
+    public String getDescription() {
+        return description;
+    }
 }
