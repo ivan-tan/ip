@@ -14,16 +14,24 @@ public class Ashley {
         System.out.println(LINE_SEPARATOR);
 
         Scanner in = new Scanner(System.in);
+        TaskManager taskManager = new TaskManager();
 
         while (true) {
-            String line = in.nextLine();
-            if (line.equalsIgnoreCase("bye")) {
+            String userInput = in.nextLine();
+            if (userInput.equalsIgnoreCase("bye")) {
                 System.out.println(LINE_SEPARATOR);
                 System.out.println("Bye. Hope to see you again soon!");
                 System.out.println(LINE_SEPARATOR);
                 break;
+            } else if (userInput.startsWith("add ")) {
+                String taskDescription = userInput.substring(4).trim();
+                taskManager.addTask(taskDescription);
+                System.out.println("added: " + taskDescription);
+            } else if (userInput.equalsIgnoreCase("list")) {
+                taskManager.listTasks();
             }
-            echo(line);
+
         }
+
     }
 }
