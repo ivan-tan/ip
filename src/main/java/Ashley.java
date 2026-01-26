@@ -29,6 +29,14 @@ public class Ashley {
                 System.out.println("added: " + taskDescription);
             } else if (userInput.equalsIgnoreCase("list")) {
                 taskManager.listTasks();
+            } else if (userInput.startsWith("mark ")) {
+                int taskId = Integer.parseInt(userInput.substring(5).trim());
+                taskManager.markAsDone(taskId);
+                System.out.println("marked " + taskManager.getTaskDescription(taskId) + " as done!");
+            } else if (userInput.startsWith("unmark ")) {
+                int taskId = Integer.parseInt(userInput.substring(7).trim());
+                taskManager.markasNotDone(taskId);
+                System.out.println("unmarked " + taskManager.getTaskDescription(taskId) + " as done!");
             }
 
         }
