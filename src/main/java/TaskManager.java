@@ -1,15 +1,15 @@
 public class TaskManager {
     private Task[] tasks = new Task[100];
-    private static int taskId = 1;
+    private static int taskCount = 1;
 
-    public void addTask(String taskDescription) {
-        tasks[taskId] = new Task(taskDescription);
-        taskId++;
+    public void addTask(Task t) {
+        tasks[taskCount] = t;
+        taskCount++;
     }
 
     public void listTasks() {
-        for (int i = 1; i < taskId; i++) {
-            System.out.println( i + ":" + "[" + tasks[i].getStatusIcon() + "] " + tasks[i].getDescription());
+        for (int taskNum = 1; taskNum < taskCount; taskNum++) {
+            System.out.println(taskNum + ":" + tasks[taskNum].toString() );
         }
     }
 
