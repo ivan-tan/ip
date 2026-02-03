@@ -1,12 +1,9 @@
 public class Task {
     private String description;
-    private int taskId;
     private boolean isDone;
 
-
-    public Task(String description, int taskId) {
+    public Task(String description) {
         this.description = description;
-        this.taskId = taskId;
         isDone = false;
     }
 
@@ -22,11 +19,12 @@ public class Task {
         isDone = false;
     }
 
-    public int getTaskId() {
-        return taskId;
-    }
-
     public String getDescription() {
         return description;
+    }
+
+    @Override
+    public String toString() {
+        return "[" + getStatusIcon() + "] " + description;
     }
 }
