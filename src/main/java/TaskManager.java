@@ -2,8 +2,8 @@ public class TaskManager {
     private Task[] tasks = new Task[100];
     private static int taskCount = 1;
 
-    public void addTask(Task t) {
-        tasks[taskCount] = t;
+    public void addTask(Task task) {
+        tasks[taskCount] = task;
         taskCount++;
     }
 
@@ -21,8 +21,12 @@ public class TaskManager {
         tasks[taskId].markAsNotDone();
     }
 
-    public String getTaskDescription(int taskId) {
-        return tasks[taskId].getDescription();
+    public String getTaskToString(int taskId) {
+        return tasks[taskId].toString();
+    }
+
+    public int getTaskCount() {
+        return taskCount-1;
     }
 
 }
