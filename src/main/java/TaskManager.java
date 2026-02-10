@@ -17,7 +17,7 @@ public class TaskManager {
         tasks[taskId].markAsDone();
     }
 
-    public void markasNotDone(int taskId) {
+    public void markAsNotDone(int taskId) {
         tasks[taskId].markAsNotDone();
     }
 
