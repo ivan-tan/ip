@@ -1,3 +1,5 @@
+package Ashley;
+
 import java.util.Scanner;
 
 public class Ashley {
