@@ -2,23 +2,28 @@
 Hello! I'm Ashley
 What can I do for you?
 ---------------------------------------------------
-Got it. I've added this task:
+Ok add liao:
   [T][ ] eat lunch
-Now you have 1 task(s) in the list.
-Got it. I've added this task:
+Now have 1 task(s)
+---------------------------------------------------
+Ok add liao:
   [D][ ] return book (by: sat)
-Now you have 2 task(s) in the list.
-Got it. I've added this task:
+Now have 2 task(s)
+---------------------------------------------------
+Ok add liao:
   [E][ ] meet friend (from: 2 to: 3)
-Now you have 3 task(s) in the list.
+Now have 3 task(s)
+---------------------------------------------------
 1:[T][ ] eat lunch
 2:[D][ ] return book (by: sat)
 3:[E][ ] meet friend (from: 2 to: 3)
-Nice! I've marked this task as done:
+---------------------------------------------------
+Ok mark as done alr:
   [T][X] eat lunch
+---------------------------------------------------
 1:[T][X] eat lunch
 2:[D][ ] return book (by: sat)
 3:[E][ ] meet friend (from: 2 to: 3)
 ---------------------------------------------------
-Bye. Hope to see you again soon!
+bye ttyl
 ---------------------------------------------------

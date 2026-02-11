@@ -27,9 +27,9 @@ public class Ashley {
             } catch (AshleyException e) {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
-                System.out.println("☹ OOPS!!! Please provide a valid task number.");
+                System.out.println("what task number you referring to?");
             } catch (IndexOutOfBoundsException e) {
-                System.out.println("☹ OOPS!!! That task number doesn't exist in your list.");
+                System.out.println("got no such task number");
             } finally {
                 System.out.println(LINE_SEPARATOR);
             }
@@ -90,10 +90,10 @@ public class Ashley {
         int taskId = Integer.parseInt(input.split(" ")[1]);
         if (isDone) {
             taskManager.markAsDone(taskId);
-            System.out.println("Nice! I've marked this task as done:\n  " + taskManager.getTaskToString(taskId));
+            System.out.println("Ok mark as done alr:\n  " + taskManager.getTaskToString(taskId));
         } else {
             taskManager.markAsNotDone(taskId);
-            System.out.println("OK, I've marked this task as not done yet:\n  " + taskManager.getTaskToString(taskId));
+            System.out.println("Ok mark as not done yet:\n  " + taskManager.getTaskToString(taskId));
         }
     }
 
@@ -103,7 +103,7 @@ public class Ashley {
     }
 
     private static void printExitMessage() {
-        System.out.println(LINE_SEPARATOR + "\nBye. Hope to see you again soon!\n" + LINE_SEPARATOR);
+        System.out.println("bye ttyl");
     }
 
     private static void handleRubbishMessage() throws AshleyException {
