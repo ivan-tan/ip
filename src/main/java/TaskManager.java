@@ -9,16 +9,24 @@ public class TaskManager {
 
     public void listTasks() {
         for (int taskNum = 1; taskNum < taskCount; taskNum++) {
-            System.out.println(taskNum + ":" + tasks[taskNum].toString() );
+            System.out.println(taskNum + ":" + tasks[taskNum].toString());
         }
     }
 
     public void markAsDone(int taskId) {
+        validateMark(taskId);
         tasks[taskId].markAsDone();
     }
 
-    public void markasNotDone(int taskId) {
+    public void markAsNotDone(int taskId) {
+        validateMark(taskId);
         tasks[taskId].markAsNotDone();
+    }
+
+    public void validateMark(int taskId) throws IndexOutOfBoundsException {
+        if (taskId < 1 || taskId > taskCount) {
+            throw new IndexOutOfBoundsException();
+        }
     }
 
     public String getTaskToString(int taskId) {
@@ -26,7 +34,7 @@ public class TaskManager {
     }
 
     public int getTaskCount() {
-        return taskCount-1;
+        return taskCount - 1;
     }
 
 }
