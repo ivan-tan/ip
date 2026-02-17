@@ -1,42 +1,50 @@
 package Ashley;
 
+import java.util.ArrayList;
+
 public class TaskManager {
-    private Task[] tasks = new Task[100];
-    private static int taskCount = 1;
+    private ArrayList<Task> tasks = new ArrayList<>();
 
     public void addTask(Task task) {
-        tasks[taskCount] = task;
-        taskCount++;
+        tasks.add(task);
+    }
+
+    public void deleteTask(int taskId) {
+        validateIndex(taskId);
+        tasks.remove(taskId-1);
     }
 
     public void listTasks() {
-        for (int taskNum = 1; taskNum < taskCount; taskNum++) {
-            System.out.println(taskNum + ":" + tasks[taskNum].toString());
+        if (tasks.isEmpty()) {
+            System.out.println("dun hv any tasks");
+        }
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println(i+1 + ":" + tasks.get(i).toString());
         }
     }
 
     public void markAsDone(int taskId) {
-        validateMark(taskId);
-        tasks[taskId].markAsDone();
+        validateIndex(taskId);
+        tasks.get(taskId-1).markAsDone();
     }
 
     public void markAsNotDone(int taskId) {
-        validateMark(taskId);
-        tasks[taskId].markAsNotDone();
+        validateIndex(taskId);
+        tasks.get(taskId-1).markAsNotDone();
     }
 
-    public void validateMark(int taskId) throws IndexOutOfBoundsException {
-        if (taskId < 1 || taskId > taskCount) {
+    public void validateIndex(int taskId) throws IndexOutOfBoundsException {
+        if (taskId < 1 || taskId > tasks.size()) {
             throw new IndexOutOfBoundsException();
         }
     }
 
     public String getTaskToString(int taskId) {
-        return tasks[taskId].toString();
+        return tasks.get(taskId-1).toString();
     }
 
     public int getTaskCount() {
-        return taskCount - 1;
+        return tasks.size();
     }
 
 }

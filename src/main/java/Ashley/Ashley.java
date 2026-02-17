@@ -19,13 +19,17 @@ public class Ashley {
                 }
                 if (userInput.equalsIgnoreCase("list")) {
                     taskManager.listTasks();
+                } else if (userInput.startsWith("delete")) {
+                    handleDelete(userInput, taskManager);
                 } else if (userInput.startsWith("mark")) {
                     handleMark(userInput, taskManager, true);
                 } else if (userInput.startsWith("unmark")) {
                     handleMark(userInput, taskManager, false);
-                } else if (userInput.startsWith("todo") || userInput.startsWith("deadline") || userInput.startsWith("event"))  {
+                } else if (userInput.startsWith("todo") || userInput.startsWith("deadline") || userInput.startsWith("event")) {
                     handleTaskCreation(userInput, taskManager);
-                } else {handleRubbishMessage();}
+                } else {
+                    handleRubbishMessage();
+                }
             } catch (AshleyException e) {
                 System.out.println(e.getMessage());
             } catch (NumberFormatException e) {
@@ -50,10 +54,13 @@ public class Ashley {
         } else if (input.startsWith("deadline")) {
             String[] parts = input.substring(8).split(" by ");
             String description = parts[0].trim();
-            if (description.isEmpty()) {throw new AshleyException("huh?? what kind of deadline is dis?");}
+            if (description.isEmpty()) {
+                throw new AshleyException("huh?? what kind of deadline is dis?");
+            }
             if (!input.contains(" by ")) {
                 throw new AshleyException("by when?");
-            }if (parts.length < 2 || parts[1].trim().isEmpty()) {
+            }
+            if (parts.length < 2 || parts[1].trim().isEmpty()) {
                 throw new AshleyException("by when?");
             }
             newTask = new Deadline(description, parts[1].trim());
@@ -96,6 +103,22 @@ public class Ashley {
         } else {
             taskManager.markAsNotDone(taskId);
             System.out.println("Ok mark as not done yet:\n  " + taskManager.getTaskToString(taskId));
+        }
+    }
+
+    private static void handleDelete(String input, TaskManager taskManager) throws AshleyException {
+        try {
+            String[] parts = input.split(" ");
+            if (parts.length < 2) {
+                throw new AshleyException("delete which one?");
+            }
+            int taskId = Integer.parseInt(parts[1]);
+            String taskDesc = taskManager.getTaskToString(taskId);
+            taskManager.deleteTask(taskId);
+            System.out.println("Noted. I've removed this task:\n  " + taskDesc);
+            System.out.println("Now you have " + taskManager.getTaskCount() + " tasks in the list.");
+        } catch (NumberFormatException e) {
+            throw new AshleyException("give me a proper number to delete leh");
         }
     }
 
