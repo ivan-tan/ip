@@ -1,9 +1,20 @@
 package Ashley;
 
 import java.util.ArrayList;
+import java.io.IOException;
 
 public class TaskManager {
     private ArrayList<Task> tasks = new ArrayList<>();
+    private Storage storage;
+
+    public TaskManager(Storage storage) {
+        this.storage = storage;
+        try {
+            tasks = storage.load();
+        } catch (IOException e) {
+            System.out.println("Cannot load tasks leh");
+        }
+    }
 
     public void addTask(Task task) {
         tasks.add(task);
@@ -11,26 +22,38 @@ public class TaskManager {
 
     public void deleteTask(int taskId) {
         validateIndex(taskId);
-        tasks.remove(taskId-1);
+        tasks.remove(taskId - 1);
+        triggerSave();
     }
+
+    private void triggerSave() {
+        try {
+            storage.save(tasks);
+        } catch (IOException e) {
+            System.out.println("Cannot save to disk leh");
+        }
+    }
+
 
     public void listTasks() {
         if (tasks.isEmpty()) {
             System.out.println("dun hv any tasks");
         }
         for (int i = 0; i < tasks.size(); i++) {
-            System.out.println(i+1 + ":" + tasks.get(i).toString());
+            System.out.println(i + 1 + ":" + tasks.get(i).toString());
         }
     }
 
     public void markAsDone(int taskId) {
         validateIndex(taskId);
-        tasks.get(taskId-1).markAsDone();
+        tasks.get(taskId - 1).markAsDone();
+        triggerSave();
     }
 
     public void markAsNotDone(int taskId) {
         validateIndex(taskId);
-        tasks.get(taskId-1).markAsNotDone();
+        tasks.get(taskId - 1).markAsNotDone();
+        triggerSave();
     }
 
     public void validateIndex(int taskId) throws IndexOutOfBoundsException {
@@ -40,7 +63,7 @@ public class TaskManager {
     }
 
     public String getTaskToString(int taskId) {
-        return tasks.get(taskId-1).toString();
+        return tasks.get(taskId - 1).toString();
     }
 
     public int getTaskCount() {
