@@ -18,6 +18,7 @@ public class TaskManager {
 
     public void addTask(Task task) {
         tasks.add(task);
+        triggerSave();
     }
 
     public void deleteTask(int taskId) {
