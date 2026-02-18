@@ -1,5 +1,6 @@
 package Ashley;
 
+import java.io.IOException;
 import java.util.Scanner;
 
 public class Ashley {
@@ -8,7 +9,9 @@ public class Ashley {
     public static void main(String[] args) {
         printWelcomeMessage();
         Scanner in = new Scanner(System.in);
-        TaskManager taskManager = new TaskManager();
+        Storage storage = new Storage("./data/ashley.txt");
+        TaskManager taskManager = new TaskManager(storage);
+
 
         while (true) {
             String userInput = in.nextLine().trim();
@@ -35,6 +38,7 @@ public class Ashley {
             } finally {
                 System.out.println(LINE_SEPARATOR);
             }
+
         }
     }
 

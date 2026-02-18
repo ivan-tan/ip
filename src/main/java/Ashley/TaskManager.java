@@ -1,12 +1,33 @@
 package Ashley;
 
+import java.io.IOException;
+
 public class TaskManager {
     private Task[] tasks = new Task[100];
-    private static int taskCount = 1;
+    private int taskCount = 0;
+    private Storage storage;
+
+    public TaskManager(Storage storage) {
+        this.storage = storage;
+        try {
+            this.taskCount = storage.load(tasks); // Load existing data on startup
+        } catch (IOException e) {
+            System.out.println("Could not load data.");
+        }
+    }
+
+    private void triggerSave() {
+        try {
+            storage.save(tasks, taskCount); // Tell storage to save current state
+        } catch (IOException e) {
+            System.out.println("Error saving to disk!");
+        }
+    }
 
     public void addTask(Task task) {
         tasks[taskCount] = task;
         taskCount++;
+        triggerSave();
     }
 
     public void listTasks() {
@@ -18,11 +39,13 @@ public class TaskManager {
     public void markAsDone(int taskId) {
         validateMark(taskId);
         tasks[taskId].markAsDone();
+        triggerSave();
     }
 
     public void markAsNotDone(int taskId) {
         validateMark(taskId);
         tasks[taskId].markAsNotDone();
+        triggerSave();
     }
 
     public void validateMark(int taskId) throws IndexOutOfBoundsException {
