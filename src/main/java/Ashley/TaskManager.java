@@ -17,25 +17,20 @@ public class TaskManager {
         this.tasks = emptyList;
     }
 
-    public void addTask(Task task) {
+    public void addTask(Task task) throws IOException {
         tasks.add(task);
         triggerSave();
     }
 
-    public void deleteTask(int taskId) {
+    public void deleteTask(int taskId) throws IOException {
         validateIndex(taskId);
         tasks.remove(taskId - 1);
         triggerSave();
     }
 
-    private void triggerSave() {
-        try {
-            storage.save(tasks);
-        } catch (IOException e) {
-            System.out.println("Cannot save to disk leh");
-        }
+    private void triggerSave() throws IOException {
+        storage.save(tasks);
     }
-
 
     public void listTasks() {
         if (tasks.isEmpty()) {
@@ -46,13 +41,13 @@ public class TaskManager {
         }
     }
 
-    public void markAsDone(int taskId) {
+    public void markAsDone(int taskId) throws IOException {
         validateIndex(taskId);
         tasks.get(taskId - 1).markAsDone();
         triggerSave();
     }
 
-    public void markAsNotDone(int taskId) {
+    public void markAsNotDone(int taskId) throws IOException {
         validateIndex(taskId);
         tasks.get(taskId - 1).markAsNotDone();
         triggerSave();

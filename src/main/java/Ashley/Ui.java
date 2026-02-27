@@ -15,7 +15,7 @@ public class Ui {
     }
 
     public void showWelcome() {
-        System.out.println(LINE_SEPARATOR + "\nHello! I'm Ashley\nWhat can I do for you?\n" + LINE_SEPARATOR);
+        System.out.println(LINE_SEPARATOR + "\nhello what you want?\n" + LINE_SEPARATOR);
     }
 
     public void showLine() {
@@ -36,5 +36,15 @@ public class Ui {
 
     public void sendMessage(String message) {
         System.out.println(message);
+    }
+
+    public void showTaskAdded(Task task, int totalTasks) {
+        System.out.println("Ok add liao:\n  " + task);
+        System.out.println("Now have " + totalTasks + " task(s)");
+    }
+
+    public void showTaskDeleted(String taskDescription, int totalTasks) {
+        System.out.println("Ok I remove this task liao:\n  " + taskDescription);
+        System.out.println("Now have " + totalTasks + " task(s)");
     }
 }
