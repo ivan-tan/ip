@@ -1,13 +1,33 @@
 package Ashley;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ashley {
+    private Ui ui;
+    private Storage storage;
+    private TaskManager taskManager;
+
+    public Ashley(String filepath) {
+        ui = new Ui();
+        storage = new Storage(filepath);
+        try {
+            taskManager = new TaskManager(storage);
+        } catch (IOException e) {
+            ui.showLoadingError();
+            taskManager = new TaskManager(storage, new ArrayList<Task>());
+        }
+    }
+
+    public void run(){
+        ui.showWelcome();
+    }
     public static final String LINE_SEPARATOR = "---------------------------------------------------";
 
     public static void main(String[] args) {
-        printWelcomeMessage();
+        new Ashley("./data/ashley.txt").run();
+        /*printWelcomeMessage();
         Scanner in = new Scanner(System.in);
         Storage storage = new Storage("./data/ashley.txt");
         TaskManager taskManager = new TaskManager(storage);
@@ -132,5 +152,6 @@ public class Ashley {
 
     private static void handleRubbishMessage() throws AshleyException {
         throw new AshleyException("what are you talking about?");
+   */
     }
 }

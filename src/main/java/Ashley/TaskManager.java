@@ -7,13 +7,14 @@ public class TaskManager {
     private ArrayList<Task> tasks = new ArrayList<>();
     private Storage storage;
 
-    public TaskManager(Storage storage) {
+    public TaskManager(Storage storage) throws IOException {
         this.storage = storage;
-        try {
-            tasks = storage.load();
-        } catch (IOException e) {
-            System.out.println("Cannot load tasks leh");
-        }
+        this.tasks = storage.load();
+    }
+
+    public TaskManager(Storage storage, ArrayList<Task> emptyList) {
+        this.storage = storage;
+        this.tasks = emptyList;
     }
 
     public void addTask(Task task) {
