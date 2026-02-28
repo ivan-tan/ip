@@ -3,6 +3,9 @@ package Ashley;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Contains methods which process the user command and translates it into actions performed by TaskManager and Ui.
+ */
 public class Parser {
 
     public static void parse(String fullCommand, TaskManager taskManager, Ui ui) throws AshleyException {

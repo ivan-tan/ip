@@ -3,6 +3,11 @@ package Ashley;
 import java.util.ArrayList;
 import java.io.IOException;
 
+/**
+ * Manages the list of tasks.
+ * Includes methods to add, delete, mark and find tasks.
+ */
+
 public class TaskManager {
     private ArrayList<Task> tasks = new ArrayList<>();
     private Storage storage;

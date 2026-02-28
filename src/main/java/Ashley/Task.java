@@ -1,5 +1,9 @@
 package Ashley;
 
+/**
+ * Serves as the base class for Todo, Deadline and Event.
+ * Contains the attributes of the task description and whether the task is done.
+ */
 public class Task {
     private String description;
     private boolean isDone;

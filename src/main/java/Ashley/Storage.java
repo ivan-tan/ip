@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.ArrayList;
 
+/**
+ * Handles loading tasks and saving tasks to disk, so tasks remain when user reloads the chatbot.
+ */
 public class Storage {
     private String filePath;
 

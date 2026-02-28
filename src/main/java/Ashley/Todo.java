@@ -1,5 +1,8 @@
 package Ashley;
 
+/**
+ * Represents a simple task containing only a description.
+ */
 public class Todo extends Task {
     public Todo(String description) {
         super(description);
