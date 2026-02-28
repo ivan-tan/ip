@@ -1,6 +1,7 @@
 package Ashley;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Parser {
 
@@ -31,6 +32,9 @@ public class Parser {
                 break;
             case "delete":
                 handleDelete(arguments, taskManager, ui);
+                break;
+            case "find":
+                handleFind(arguments, taskManager, ui);
                 break;
             default:
                 throw new AshleyException("what are you talking about?");
@@ -97,5 +101,13 @@ public class Parser {
         String desc = tm.getTaskToString(index);
         tm.deleteTask(index);
         ui.showTaskDeleted(desc, tm.getTaskCount());
+    }
+
+    private static void handleFind(String args, TaskManager tm, Ui ui) throws AshleyException {
+        if (args.isEmpty()) {
+            throw new AshleyException("find what leh? give me a keyword la");
+        }
+        ArrayList<Task> matchingTasks = tm.findTasks(args);
+        ui.showSearchResults(matchingTasks);
     }
 }

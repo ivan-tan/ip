@@ -1,5 +1,6 @@
 package Ashley;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
@@ -46,5 +47,16 @@ public class Ui {
     public void showTaskDeleted(String taskDescription, int totalTasks) {
         System.out.println("Ok I remove this task liao:\n  " + taskDescription);
         System.out.println("Now have " + totalTasks + " task(s)");
+    }
+
+    public void showSearchResults(ArrayList<Task> matchingTasks) {
+        if (matchingTasks.isEmpty()) {
+            System.out.println("got no such tasks with that keyword");
+            return;
+        }
+        System.out.println("oh i found some tasks with that keyword");
+        for (int i = 0; i < matchingTasks.size(); i++) {
+            System.out.println((i + 1) + "." + matchingTasks.get(i).toString());
+        }
     }
 }
