@@ -3,6 +3,10 @@ package Ashley;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * The main starting point where the chatbot runs.
+ * The class initializes the user interface, storage, user command parser and task manager.
+ */
 public class Ashley {
     private Ui ui;
     private Storage storage;

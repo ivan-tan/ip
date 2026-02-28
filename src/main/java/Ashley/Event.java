@@ -1,5 +1,9 @@
 package Ashley;
 
+/**
+ * Represents a task that occurs during a user-defined time period.
+ * An <code>Event</code> object contains a description and a start time string and end time string.
+ */
 public class Event extends Task {
     protected String from;
     protected String to;

@@ -1,5 +1,9 @@
 package Ashley;
 
+/**
+ * Represents a task with a specific deadline.
+ * A <code>Deadline</code> object contains a description and a date/time string indicating the deadline of the task.
+ */
 public class Deadline extends Task {
     private String by;
 

@@ -3,6 +3,10 @@ package Ashley;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Deals with the frontend of the chatbot.
+ * Prints formatted messages and error notifications to the console.
+ */
 public class Ui {
     public static final String LINE_SEPARATOR = "---------------------------------------------------";
     private final Scanner in;
