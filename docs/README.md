@@ -1,6 +1,7 @@
-# Ashley User Guide
+# Ashley 
 
-Guide to using my chatbot, Ashley, to keep track of your tasks. Tasks added are stored in `./data/Ashley.txt` and will be reloaded on starting the chatbot.
+Welcome to the user guide for my chatbot, Ashley! Ashley can keep track of your daily schedule.
+Tasks added are stored in `./data/Ashley.txt` and will be reloaded on starting Ashley.
 
 Notes about command format: Words in `UPPER_CASE` are the parameters to be supplied by the user.
 
@@ -60,7 +61,7 @@ where `xxx` represents number of tasks in the list.
 
 Lists all tasks in a numbered list
 
-Command: `List`
+Command: `list`
 
 Output: A numbered list of all the tasks in memory.
 
@@ -93,7 +94,7 @@ Marks or unmarks a task as done.
 
 Command: `mark NUMBER` or `unmark NUMBER` where `NUMBER` corresponds to the ranking on the task in the list.
 
-Example: `MARK 1`
+Example: `mark 1`
 
 Output: Echoes the marked task 
 ```
