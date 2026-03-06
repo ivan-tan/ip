@@ -20,7 +20,7 @@ public class Ui {
     }
 
     public void showWelcome() {
-        System.out.println(LINE_SEPARATOR + "\nhello what you want?\n" + LINE_SEPARATOR);
+        System.out.println(LINE_SEPARATOR + "\nhello I am Ashley, faster what you want?\n" + LINE_SEPARATOR);
     }
 
     public void showLine() {
@@ -36,7 +36,7 @@ public class Ui {
     }
 
     public void showExit() {
-        System.out.println("bye ttyl");
+        System.out.println("ok bye ttyl");
     }
 
     public void sendMessage(String message) {
